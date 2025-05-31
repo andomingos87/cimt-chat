@@ -45,3 +45,12 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        build-args: |
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY=${{ secrets.SUPABASE_KEY }}
+          PGHOST=db.yignltxsqnbuvtobhtbw.supabase.co
+          PGPORT=5432
+          PGDATABASE=postgres
+          PGUSER=postgres
+          PGPASSWORD=${{ secrets.PGPASSWORD }}

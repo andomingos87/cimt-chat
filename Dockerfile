@@ -1,7 +1,15 @@
-# Use uma imagem mais leve
 FROM python:3.11-slim
 
-# Instale apenas dependências essenciais do sistema
+# Declarar argumentos do build
+ARG OPENAI_API_KEY
+ARG SUPABASE_URL
+ARG SUPABASE_KEY
+ARG PGHOST
+ARG PGPORT
+ARG PGDATABASE
+ARG PGUSER
+ARG PGPASSWORD
+
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
@@ -9,19 +17,24 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copie apenas o requirements.txt primeiro (para cache)
 COPY requirements.txt ./
 
-# Instale dependências Python
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
     pip cache purge
 
-# Copie apenas os arquivos necessários
 COPY src/ ./src/
-COPY .env ./
 
+# Definir variáveis de ambiente
 ENV PYTHONPATH=/app
+ENV OPENAI_API_KEY=$OPENAI_API_KEY
+ENV SUPABASE_URL=$SUPABASE_URL
+ENV SUPABASE_KEY=$SUPABASE_KEY
+ENV PGHOST=$PGHOST
+ENV PGPORT=$PGPORT
+ENV PGDATABASE=$PGDATABASE
+ENV PGUSER=$PGUSER
+ENV PGPASSWORD=$PGPASSWORD
 
 EXPOSE 8501
 
