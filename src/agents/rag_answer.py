@@ -1,14 +1,10 @@
 import os
 import openai
-import json
 from supabase import create_client
-from dotenv import load_dotenv
 from db.pg_connection import conectar_postgres
 
-load_dotenv()
-
 openai.api_key = os.getenv("OPENAI_API_KEY")
-supabase = create_client("https://yignltxsqnbuvtobhtbw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlpZ25sdHhzcW5idXZ0b2JodGJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2MDY3MjQsImV4cCI6MjA2NDE4MjcyNH0.JphhO_MXwaSuRHWat21nt3g73BnupsK4NAiTiqg5_TQ")
+supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
 EMBEDDING_MODEL = "text-embedding-3-small"
 GPT_MODEL = "gpt-3.5-turbo"  # ou "gpt-3.5-turbo" para reduzir custo
 

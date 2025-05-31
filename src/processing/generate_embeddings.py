@@ -1,10 +1,7 @@
 import os
-import json
 import openai
 from typing import List, Dict
-from dotenv import load_dotenv
 
-load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 EMBEDDING_MODEL = "text-embedding-3-small"

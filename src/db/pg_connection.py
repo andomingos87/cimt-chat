@@ -1,7 +1,4 @@
 import os, psycopg2
-from dotenv import load_dotenv
-
-load_dotenv()
 
 def conectar_postgres():
     return psycopg2.connect(
