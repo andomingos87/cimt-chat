@@ -2,8 +2,6 @@ import os
 import json
 from supabase import create_client
 
-# teste
-
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
