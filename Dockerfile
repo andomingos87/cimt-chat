@@ -23,4 +23,6 @@ COPY .env ./
 
 ENV PYTHONPATH=/app
 
-CMD ["python", "src/app/chat_rag.py"]
+EXPOSE 8501
+
+CMD ["streamlit", "run", "src/app/chat_rag.py", "--server.port=8501", "--server.address=0.0.0.0"]
