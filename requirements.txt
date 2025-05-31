@@ -1,6 +1,3 @@
-docling
-PyMuPDF
-tiktoken
 openai==0.28
 python-dotenv
 supabase
