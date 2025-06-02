@@ -1,2 +1,2 @@
 # Modelo para executar script
-$env:PYTHONPATH="src"; python src/scripts/run_insert_supabase.py
+$env:PYTHONPATH="src"; python src/app/chat_rag.py
